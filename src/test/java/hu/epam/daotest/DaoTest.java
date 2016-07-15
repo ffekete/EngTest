@@ -65,17 +65,17 @@ public class DaoTest{
     public void composeDataShouldReturnOneQuestion(){
     	TestModel testModel = new TestModel();
    	
-		Answer a1 = new Answer("Answer1", true);
-		Answer a2 = new Answer("Answer2", false);
+		Answer a1 = new Answer("Sky", true);
+		Answer a2 = new Answer("Sand", false);
     	
-    	TestDataInterface testData = new TestData("What is it?", Arrays.asList(new Answer[]{a1, a2})); 
+    	TestDataInterface testData = new TestData("Which one is blue?", Arrays.asList(new Answer[]{a1, a2})); 
     			
     	testModel.storeData(testData);
     	
-		Answer a3 = new Answer("Answer3", true);
-		Answer a4 = new Answer("Answer4", false);
+		Answer a3 = new Answer("Twenty-four!", true);
+		Answer a4 = new Answer("What how many?", false);
     	
-    	TestDataInterface testData2 = new TestData("What is it?", Arrays.asList(new Answer[]{a3, a4})); 
+    	TestDataInterface testData2 = new TestData("How many?", Arrays.asList(new Answer[]{a3, a4})); 
     			
     	testModel.storeData(testData2);
     	

@@ -25,4 +25,26 @@ public class Answer{
 	public String toString(){
 		return text + " ("+ (value?"right":"wrong") + ")";
 	}
+
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	public boolean isValue() {
+		return value;
+	}
+
+	public void setValue(boolean value) {
+		this.value = value;
+	}
+
+	public long getId() {
+		return id;
+	}
+	
+	
 }

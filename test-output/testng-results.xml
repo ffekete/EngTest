@@ -2,12 +2,12 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="413" started-at="2016-07-15T06:34:16Z" finished-at="2016-07-15T06:34:17Z">
+  <suite name="Default suite" duration-ms="409" started-at="2016-07-15T07:10:01Z" finished-at="2016-07-15T07:10:02Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="413" started-at="2016-07-15T06:34:16Z" finished-at="2016-07-15T06:34:17Z">
+    <test name="Default test" duration-ms="409" started-at="2016-07-15T07:10:01Z" finished-at="2016-07-15T07:10:02Z">
       <class name="hu.epam.daotest.DaoTest">
-        <test-method status="PASS" signature="composeDataShouldReturnOneQuestion()[pri:0, instance:hu.epam.daotest.DaoTest@16a5eb6d]" name="composeDataShouldReturnOneQuestion" duration-ms="401" started-at="2016-07-15T08:34:16Z" finished-at="2016-07-15T08:34:17Z">
+        <test-method status="PASS" signature="composeDataShouldReturnOneQuestion()[pri:0, instance:hu.epam.daotest.DaoTest@208f0007]" name="composeDataShouldReturnOneQuestion" duration-ms="396" started-at="2016-07-15T09:10:01Z" finished-at="2016-07-15T09:10:02Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- composeDataShouldReturnOneQuestion -->
