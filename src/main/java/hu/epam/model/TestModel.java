@@ -14,6 +14,16 @@ import javax.persistence.Query;
 
 public class TestModel {
 
+	public TestDataInterface retrieveQuestionById(String id){
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "TestAnswers" );
+	    EntityManager entityManager = emfactory.createEntityManager();
+	    
+	    TestDataInterface question =  entityManager.find(TestData.class, Long.parseLong(id));
+	    question.getAnswers().size(); // instantiatin the list
+	    
+	    return question;
+	}
+	
 	public TestDataInterface retrieveOneQuestion(){
 		try {
 			DriverManager.registerDriver(new org.apache.derby.jdbc.EmbeddedDriver());

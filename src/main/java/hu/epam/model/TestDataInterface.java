@@ -13,5 +13,7 @@ public interface TestDataInterface {
 	void setAnswers(List<Answer> answers);
 
 	long getId();
+	
+	public boolean evaluateAnswer(String answer);
 
 }

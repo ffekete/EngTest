@@ -20,6 +20,7 @@ public class TestView {
 			String answer = ((Answer)it.next()).getText();
 			out.println("<input type=\"radio\" name=\"answer\" value=\"" + answer +"\">" + answer + "</input><br>");
 		}
+		out.println("<input type=\"hidden\" name=\"questionId\" value=\"" + testData.getId() + "\" ></input>");
 		out.println("<input type=\"submit\" class=\"submitButton\" value=\"Submit answer\"></input>");
 		out.println("</form>");
 		

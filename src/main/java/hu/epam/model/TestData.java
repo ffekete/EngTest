@@ -1,6 +1,7 @@
 package hu.epam.model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -70,4 +71,18 @@ public class TestData implements TestDataInterface {
 		return "Queastion: " + this.text +" answers: " + this.answers;
 	}
 	
+	public boolean evaluateAnswer(String answer){
+		System.out.println("-----------------------------------------------------");
+		System.out.println(answer);
+		Iterator<Answer> it = answers.iterator();
+		
+		
+		while(it.hasNext()){
+			Answer a = it.next();
+			if(a.getText().equals(answer)){
+				return a.isValue();
+			}
+		}
+		return false;	
+	}
 }

@@ -1,7 +1,8 @@
-package hu.epam.servlet;
+package 	hu.epam.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,8 +17,17 @@ public class requestHandler extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException{
-		response.getWriter().println(request.getAttribute("answer"));
+		
+		String answer = request.getParameter("answer");
+		String questionId = request.getParameter("questionId");
 		TestController tc = new TestController();
-		tc.serveRequest(request, response);
+		
+		if(answer == null){
+			tc.serveNewRequest(request, response);
+		}
+		else
+		{
+			tc.evaluateTestResult(questionId, answer, response);
+		}
 	}
 }
