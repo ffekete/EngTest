@@ -11,7 +11,7 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 public class TestModel {
-	EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "TestAnswers" );
+	private EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "TestAnswers" );
 	
 	public TestDataInterface retrieveQuestionById(String id){
 		
