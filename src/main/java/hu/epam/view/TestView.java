@@ -11,6 +11,13 @@ import hu.epam.model.TestDataInterface;
 
 public class TestView {
 	
+	public void generateTestResult(HttpServletResponse response, String textToDisplay) throws IOException{
+		response.getWriter().println(textToDisplay);
+		response.getWriter().println("<form action=\"/WebApp\">" + 
+			    "<input type=\"submit\" value=\"New question!\">" + 
+			    "</form>");
+	}
+	
 	public void generateNormalView(TestDataInterface testData, HttpServletResponse response) throws IOException{
 		PrintWriter out = response.getWriter();
 		out.println("<div class=\"question\">"+testData.getText()+"</div>");
