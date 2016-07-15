@@ -1,5 +1,6 @@
 package hu.epam.daotest;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -10,6 +11,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeSuite;
@@ -17,8 +20,9 @@ import org.testng.annotations.Test;
 
 import hu.epam.controller.TestController;
 import hu.epam.model.Answer;
+import hu.epam.model.TestData;
+import hu.epam.model.TestDataInterface;
 import hu.epam.model.TestModel;
-import hu.epam.model.TestModelInterface;
 
 
 public class DaoTest{
@@ -27,10 +31,9 @@ public class DaoTest{
     EntityManager entitymanager = emfactory.createEntityManager();
     TestController testController;
     
-	@BeforeSuite
+	/*@BeforeSuite
 	public void createTestObject(){
-		this.testController = new TestController(new ArrayList<TestModelInterface>(), entitymanager);
-		
+	
 		ArrayList<Answer> testAnswers = new ArrayList<Answer>();
 		Answer a1 = new Answer("Answer1", true);
 		Answer a2 = new Answer("Answer2", false);
@@ -38,23 +41,48 @@ public class DaoTest{
 		testAnswers.add(a1);
 		testAnswers.add(a2);
 		
-		TestModelInterface testModel = new TestModel("What is it?", testAnswers);
+		TestDataInterface testData = new TestData("What is it?", testAnswers);
 		
 		entitymanager.getTransaction().begin();
 		entitymanager.persist(a1);
 		entitymanager.persist(a2);
-		entitymanager.persist(testModel);
+		entitymanager.persist(testData);
 		entitymanager.getTransaction().commit();
 		
 	}
     
     @Test
     public void testReadStoredDbItems(){
-    	Query allTestsQuery = entitymanager.createQuery("SELECT t FROM TestModel t");
-    	Collection<TestModel> allTests = (Collection<TestModel>) allTestsQuery.getResultList();
+    	Query allTestsQuery = entitymanager.createQuery("SELECT t FROM TestData t");
+    	Collection<TestData> allTests = (Collection<TestData>) allTestsQuery.getResultList();
     	
     	Iterator it = allTests.iterator();
     	
    		Assert.assertEquals(it.next().toString(), "Queastion: What is it? answers: [Answer1 (right), Answer2 (wrong)]");
+    }*/
+    
+    @Test
+    public void composeDataShouldReturnOneQuestion(){
+    	TestModel testModel = new TestModel();
+   	
+		Answer a1 = new Answer("Answer1", true);
+		Answer a2 = new Answer("Answer2", false);
+    	
+    	TestDataInterface testData = new TestData("What is it?", Arrays.asList(new Answer[]{a1, a2})); 
+    			
+    	testModel.storeData(testData);
+    	
+		Answer a3 = new Answer("Answer3", true);
+		Answer a4 = new Answer("Answer4", false);
+    	
+    	TestDataInterface testData2 = new TestData("What is it?", Arrays.asList(new Answer[]{a3, a4})); 
+    			
+    	testModel.storeData(testData2);
+    	
+    	TestDataInterface pickedQuestion = testModel.retrieveOneQuestion();
+    	
+    	for(int i=0; i < 10; i++){
+    		System.out.println(testModel.retrieveOneQuestion());
+    	}
     }
 }

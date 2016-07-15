@@ -1,1 +1,7 @@
-D:\Sajat\dbWorkspace\WebApp\src\main\java\hu\epam\servlet\getHandler.java
+D:\Sajat\dbWorkspace\WebApp\src\main\java\hu\epam\controller\TestController.java
+D:\Sajat\dbWorkspace\WebApp\src\main\java\hu\epam\model\TestDataInterface.java
+D:\Sajat\dbWorkspace\WebApp\src\main\java\hu\epam\view\TestView.java
+D:\Sajat\dbWorkspace\WebApp\src\main\java\hu\epam\model\TestModel.java
+D:\Sajat\dbWorkspace\WebApp\src\main\java\hu\epam\model\Answer.java
+D:\Sajat\dbWorkspace\WebApp\src\main\java\hu\epam\model\TestData.java
+D:\Sajat\dbWorkspace\WebApp\src\main\java\hu\epam\servlet\requestHandler.java

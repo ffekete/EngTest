@@ -1,28 +1,21 @@
 package hu.epam.controller;
 
-import java.util.Arrays;
+import java.io.IOException;
 import java.util.List;
-
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-import hu.epam.model.Answer;
+import hu.epam.model.TestDataInterface;
 import hu.epam.model.TestModel;
-import hu.epam.model.TestModelInterface;
+import hu.epam.view.TestView;
 
 public class TestController {
 
-	private List<TestModelInterface> testModel;
-    private EntityManager entitymanager;
+	private TestModel testModel;
 	
-	public TestController(List<TestModelInterface> testModel, EntityManager entityManager){
-		this.testModel = testModel; 
-		this.entitymanager = entityManager;
+	public void serveRequest(HttpServletRequest request, HttpServletResponse response) throws IOException{
+		TestDataInterface question = new TestModel().retrieveOneQuestion();
+		new TestView().generateNormalView(question, response);
 	}
-	
-	public void addNewData(TestModelInterface testModel){
-		this.testModel.add(testModel);
-	}
-	
 }

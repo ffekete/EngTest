@@ -8,13 +8,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import hu.epam.controller.TestController;
+
 @WebServlet(name = "getHandler", 
 			urlPatterns = "/WebApp"	)
 public class requestHandler extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException{
-		
+		TestController tc = new TestController();
+		tc.serveRequest(request, response);
 	}
 
 }

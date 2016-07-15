@@ -2,19 +2,15 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="140" started-at="2016-07-14T11:04:33Z" finished-at="2016-07-14T11:04:33Z">
+  <suite name="Default suite" duration-ms="413" started-at="2016-07-15T06:34:16Z" finished-at="2016-07-15T06:34:17Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="140" started-at="2016-07-14T11:04:33Z" finished-at="2016-07-14T11:04:33Z">
+    <test name="Default test" duration-ms="413" started-at="2016-07-15T06:34:16Z" finished-at="2016-07-15T06:34:17Z">
       <class name="hu.epam.daotest.DaoTest">
-        <test-method status="PASS" signature="createTestObject()[pri:0, instance:hu.epam.daotest.DaoTest@2a39aa2b]" name="createTestObject" is-config="true" duration-ms="54" started-at="2016-07-14T13:04:33Z" finished-at="2016-07-14T13:04:33Z">
+        <test-method status="PASS" signature="composeDataShouldReturnOneQuestion()[pri:0, instance:hu.epam.daotest.DaoTest@16a5eb6d]" name="composeDataShouldReturnOneQuestion" duration-ms="401" started-at="2016-07-15T08:34:16Z" finished-at="2016-07-15T08:34:17Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- createTestObject -->
-        <test-method status="PASS" signature="testReadStoredDbItems()[pri:0, instance:hu.epam.daotest.DaoTest@2a39aa2b]" name="testReadStoredDbItems" duration-ms="114" started-at="2016-07-14T13:04:33Z" finished-at="2016-07-14T13:04:33Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testReadStoredDbItems -->
+        </test-method> <!-- composeDataShouldReturnOneQuestion -->
       </class> <!-- hu.epam.daotest.DaoTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->

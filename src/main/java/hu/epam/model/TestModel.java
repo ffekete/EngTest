@@ -1,72 +1,68 @@
 package hu.epam.model;
 
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 
-@Entity
-public class TestModel implements TestModelInterface {
+public class TestModel {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE)
-	private long id;
+	public TestDataInterface retrieveOneQuestion(){
+		try {
+			DriverManager.registerDriver(new org.apache.derby.jdbc.EmbeddedDriver());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "TestAnswers" );
+	    EntityManager entityManager = emfactory.createEntityManager();
+		Query allTestsQuery = entityManager.createQuery("SELECT t FROM TestData t");
+    	Collection<TestDataInterface> allTests = (Collection<TestDataInterface>) allTestsQuery.getResultList();
+    	
+    	Collections.shuffle((List<?>) allTests);
+    	
+    	Iterator it = allTests.iterator();
+    	TestDataInterface testQuestion = null;
+    	
+    	if(it.hasNext()){
+    		testQuestion = (TestDataInterface) it.next();
+    	}
+    	
+    	testQuestion.getAnswers().size(); // instantiating indirect list
+
+    	entityManager.close();
+    	emfactory.close();
+    	return testQuestion;
+    	
+	}
 	
-	public String text;
-	
-	@OneToMany
-	public List<Answer> answers;
-	
-	public TestModel(){
+	public void storeData(TestDataInterface testData){
+		if(testData == null || testData.getAnswers() == null) throw new IllegalArgumentException("Null object cannot be stored!");
+		if(testData.getAnswers().size() == 0) throw new IllegalArgumentException("Question cannot be stored with zero answer");
 		
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "TestAnswers" );
+	    EntityManager entityManager = emfactory.createEntityManager();
+	    
+	    entityManager.getTransaction().begin();
+	    
+	    Iterator it = testData.getAnswers().iterator();
+	    while(it.hasNext()){
+	    	Answer a = (Answer) it.next();
+	    	System.out.println("Answer to store: " + a);
+	    	entityManager.persist(a);
+	    }
+	    
+	    entityManager.persist(testData);
+	    entityManager.getTransaction().commit();
+	    
+	    entityManager.close();
+    	emfactory.close();
 	}
-	
-	public TestModel(String text, List<Answer> answers){
-		this.text = text;
-		this.answers = answers;
-	}
-
-	/* (non-Javadoc)
-	 * @see hu.epam.model.TestModelInterface#getText()
-	 */
-	public String getText() {
-		return text;
-	}
-
-	/* (non-Javadoc)
-	 * @see hu.epam.model.TestModelInterface#setText(java.lang.String)
-	 */
-	public void setText(String text) {
-		this.text = text;
-	}
-
-	/* (non-Javadoc)
-	 * @see hu.epam.model.TestModelInterface#getAnswers()
-	 */
-	public List<Answer> getAnswers() {
-		return answers;
-	}
-
-	/* (non-Javadoc)
-	 * @see hu.epam.model.TestModelInterface#setAnswers(java.util.List)
-	 */
-	public void setAnswers(List<Answer> answers) {
-		this.answers = answers;
-	}
-
-	/* (non-Javadoc)
-	 * @see hu.epam.model.TestModelInterface#getId()
-	 */
-	public long getId() {
-		return id;
-	}
-	
-	@Override
-	public String toString(){
-		return "Queastion: " + this.text +" answers: " + this.answers;
-	}
-	
 }
