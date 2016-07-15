@@ -27,7 +27,7 @@ public class TestModel {
 	public TestDataInterface retrieveOneQuestion(){
 	    EntityManager entityManager = emfactory.createEntityManager();
 		Query allTestsQuery = entityManager.createQuery("SELECT t FROM TestData t");
-    	Collection<TestDataInterface> allTests = (Collection<TestDataInterface>) allTestsQuery.getResultList();
+    	List<TestDataInterface> allTests = (List<TestDataInterface>) allTestsQuery.getResultList();
     	
     	Collections.shuffle((List<?>) allTests);
     	
