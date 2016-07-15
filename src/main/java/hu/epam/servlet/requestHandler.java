@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import hu.epam.controller.TestController;
 
-@WebServlet(name = "getHandler", 
+@WebServlet(name = "getHandler",  
 			urlPatterns = "/WebApp"	)
 public class requestHandler extends HttpServlet{
 	private static final long serialVersionUID = 1L;
